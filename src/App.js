@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import { ChakraProvider } from "@chakra-ui/react";
 import CreateEvent from "./pages/CreateEvent/CreateEvent";
 import CreateEvent2 from "./pages/CreateEvent/CreateEvent2";
+import Grading from "./pages/Grading/Grading";
 
 function App() {
   return (

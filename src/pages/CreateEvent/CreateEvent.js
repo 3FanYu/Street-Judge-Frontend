@@ -4,13 +4,17 @@ import { useForm } from "react-hook-form";
 import React, { useState } from "react";
 import { Button } from "@chakra-ui/button";
 import { useHistory } from "react-router";
+import Api from "../../axios/Api";
 
 export default function CreateEvent() {
   const { register, handleSubmit } = useForm();
   const history = useHistory();
   const [ShowPW, setShowPW] = useState(false);
   const onSubmit = (data) => {
-    history.push({ pathname: "CreateEvent2", state: { eventInfo: data } });
+    Api.post("/event", data).then((res) => {
+      history.push({ pathname: "CreateEvent2", state: { eventID: res.data.eventID } });
+    });
+    
   };
   const handleShow = () => {
     setShowPW(!ShowPW);

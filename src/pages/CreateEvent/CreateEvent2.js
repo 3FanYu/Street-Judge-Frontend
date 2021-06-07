@@ -13,20 +13,21 @@ import {
 import Api from "../../axios/Api";
 
 export default function CreateEvent2(props) {
-  const eventInfo = props.location.state.eventInfo;
-  const { register, handleSubmit } = useForm();
+  const eventID = props.location.state.eventID;
+  const { register, unregister, handleSubmit } = useForm();
   const [JudgeNum, setJudgeNum] = useState(1);
   const [RowNum, setRowNum] = useState(0);
   const [JudgeList, setJudgeList] = useState([]);
 
   useEffect(() => {
+    unregister("names");
     setJudgeList([]);
     let tmp = [];
     for (let i = 0; i < JudgeNum; i++) {
       tmp.push(
         <Input
           key={i}
-          {...register(`judges[${i}]`)}
+          {...register(`names[${i}]`)}
           placeholder="輸入評審名稱"
         ></Input>
       );
@@ -36,12 +37,11 @@ export default function CreateEvent2(props) {
 
   const onSubmit = (data) => {
     let result = {
+      eventID: eventID,
       ...data,
-      ...eventInfo,
-      rowNum:parseInt(data.rowNum)
+      rowNum: parseInt(data.rowNum),
     };
-    console.log(result)
-    Api.post("/event", result).then((res) => {
+    Api.post("/judge", result).then((res) => {
       console.log(res);
     });
   };
@@ -67,7 +67,6 @@ export default function CreateEvent2(props) {
               </NumberInputStepper>
             </NumberInput>
             <NumberInput
-              {...register("judgeNum")}
               defaultValue={JudgeNum}
               min={0}
               max={5}
