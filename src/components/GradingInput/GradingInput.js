@@ -5,7 +5,7 @@ export default function GradingInput(props) {
   const Alphabet = "ABCDE"; //印出ＡＢＣＤＥ組
   const scores = props.scores;
   const rowIndex = props.rowIndex;
-  const onBlur = props.onBlur;
+  const onBlur = props.onBlurFunc;
   return (
     <Tr key={rowIndex}>
       {scores.map((score, index) => {
@@ -14,7 +14,7 @@ export default function GradingInput(props) {
             <Td key={index}>
               <Input
                 onBlur={(e) => {
-                  onBlur(e, 1, index);
+                  onBlur(e, index+1, rowIndex+1);
                 }}
                 placeholder={`輸入${rowIndex + 1}${Alphabet[index]}分數`}
               ></Input>
@@ -25,10 +25,11 @@ export default function GradingInput(props) {
             <Td key={index}>
               <Input
                 onBlur={(e) => {
-                  onBlur(e, 1, index);
+                  onBlur(e, score.row, rowIndex);
                 }}
                 placeholder={`輸入${score.number}${Alphabet[score.row]}分數`}
-                value={score.point}
+                defaultValue={score.point}
+                id={score._id}
               />
             </Td>
           );

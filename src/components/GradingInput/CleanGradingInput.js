@@ -4,7 +4,7 @@ import { Tr, Td } from "@chakra-ui/table";
 
 export default function CleanGradingInput(props) {
   const index = props.index;
-  const onBlur = props.onBlur;
+  const onBlur = props.onBlurFunc;
   //todo 要依照評審資訊的rowNum決定一列有幾欄
   return (
     <Tr key={index}>

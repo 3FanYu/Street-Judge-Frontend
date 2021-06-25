@@ -83,7 +83,7 @@ export default function Grading() {
           <Tr>{TableHeaderArray}</Tr>
         </Thead>
         <Tbody>
-          {Records.length > 1 ? (
+          {Records.length > 0 ? (
             Records.map((scores, rowIndex) => {
               return (
                 <GradingInput
