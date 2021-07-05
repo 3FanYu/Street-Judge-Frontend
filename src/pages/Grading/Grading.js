@@ -21,15 +21,6 @@ export default function Grading() {
       value !== undefined &&
       !Number.isNaN(value)
     ) {
-      if (key !== undefined && key !== "") {
-        //判斷是update還是insert
-        console.log("Trigger update!!");
-        Api.patch("score?scoreID=" + key + "&point=" + value.toString()).then(
-          (res) => {
-            console.log(res);
-          }
-        );
-      } else {
         console.log("trigger API !!");
         const data = {
           judgeID: judgeID,
@@ -37,10 +28,11 @@ export default function Grading() {
           row: row,
           point: value,
         };
+        console.log(data)
         Api.post("score", data).then((res) => {
           event.target.id = res.data.insertedID;
         });
-      }
+
     }
   };
 
