@@ -5,6 +5,8 @@ import React, { useState } from "react";
 import { Button } from "@chakra-ui/button";
 import { useHistory } from "react-router";
 import Api from "../../axios/Api";
+import { Image, Text } from "@chakra-ui/react";
+import bg from "../../assets/background/poppingWhite2.jpg"
 
 export default function CreateEvent() {
   const { register, handleSubmit } = useForm();
@@ -21,11 +23,24 @@ export default function CreateEvent() {
   };
   return (
     <>
-      <Center>
+      <Center h="900">
+        <Stack>
+          <Center>
+            <Image src = {bg} w="450px" h="450px"/>
+          </Center>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Stack spacing={10} w="500px">
-            <Input {...register("name")} placeholder="活動名稱"></Input>
-            <Input {...register("owner")} placeholder="負責人"></Input>
+            <Stack spacing={0}> 
+            <Text mb="9px">活動名稱</Text>
+            <Input {...register("name")} placeholder="輸入活動名稱"></Input>
+            </Stack>
+            <Stack spacing={0}> 
+            <Text mb="9px">負責人</Text>
+            <Input {...register("owner")} placeholder="輸入負責人"></Input>
+            </Stack>
+            <Stack spacing={0}> 
+            <Text mb="9px">負責人</Text>
+
             <InputGroup>
               <Input
                 type={ShowPW ? "text" : "password"}
@@ -38,9 +53,11 @@ export default function CreateEvent() {
                 </Button>
               </InputRightElement>
             </InputGroup>
+            </Stack>
             <Button type="submit">下一步</Button>
           </Stack>
         </form>
+        </Stack>
       </Center>
     </>
   );

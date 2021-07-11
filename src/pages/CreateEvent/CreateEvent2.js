@@ -11,6 +11,8 @@ import {
   NumberInputStepper,
 } from "@chakra-ui/number-input";
 import Api from "../../axios/Api";
+import { Image, Text } from "@chakra-ui/react";
+import bg from "../../assets/background/poppingWhite3.jpg"
 
 export default function CreateEvent2(props) {
   const eventID = props.location.state.eventID;
@@ -47,9 +49,13 @@ export default function CreateEvent2(props) {
   };
   return (
     <>
-      <Center>
+      <Center h="900">
+        <Stack>
+        <Image src={bg} w="450px" h="450px"></Image>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Stack spacing={10} w="500px">
+            <Stack>
+              <Text mb="8px">輸入海選排數</Text>
             <NumberInput
               {...register("rowNum")}
               type="number"
@@ -66,6 +72,9 @@ export default function CreateEvent2(props) {
                 <NumberDecrementStepper />
               </NumberInputStepper>
             </NumberInput>
+            </Stack>
+            <Stack>
+            <Text mb="8px">輸入評審人數</Text>
             <NumberInput
               defaultValue={JudgeNum}
               min={0}
@@ -80,10 +89,12 @@ export default function CreateEvent2(props) {
                 <NumberDecrementStepper />
               </NumberInputStepper>
             </NumberInput>
+            </Stack>
             {JudgeList}
             <Button type="submit">創建活動</Button>
           </Stack>
         </form>
+        </Stack>
       </Center>
     </>
   );
