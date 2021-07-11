@@ -12,9 +12,6 @@ export default function GradingInput(props) {
   const onBlur = props.onBlurFunc ? props.onBlurFunc : () => {};
   const rankInput = props.rankInput ? props.rankInput : 0;
   const isOT = props.isOT ? props.isOT : false;
-  const isFloat = (n) => {
-    return Number(n) === n && n % 1 !== 0;
-  };
   return (
     <Tr key={rowIndex}>
       <Td>
