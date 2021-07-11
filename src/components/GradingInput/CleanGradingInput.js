@@ -1,6 +1,7 @@
 import React from "react";
 import { Input } from "@chakra-ui/input";
 import { Tr, Td } from "@chakra-ui/table";
+import { Tag } from "@chakra-ui/tag";
 
 export default function CleanGradingInput(props) {
   const index = props.index;
@@ -8,6 +9,7 @@ export default function CleanGradingInput(props) {
   //todo 要依照評審資訊的rowNum決定一列有幾欄
   return (
     <Tr key={index}>
+      <Td><Tag variant="solid" colorScheme="teal">{ index }</Tag></Td>
       <Td>
         <Input
           onBlur={(e) => {

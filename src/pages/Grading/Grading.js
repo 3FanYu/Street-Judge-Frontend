@@ -5,13 +5,15 @@ import { useParams } from "react-router";
 import Api from "../../axios/Api";
 import GradingInput from "../../components/GradingInput/GradingInput";
 import CleanGradingInput from "../../components/GradingInput/CleanGradingInput";
+import { Center } from "@chakra-ui/layout";
+import { Tag } from "@chakra-ui/tag";
 export default function Grading() {
   const Alphabet = "ABCDE"; //印出ＡＢＣＤＥ組
   let { judgeID } = useParams(); // 取得網址上的參數
   const [JudgeInfo, setJudgeInfo] = useState({}); //評審資訊
   const [Records, setRecords] = useState([]);
   const [RowIndex, setRowIndex] = useState(1); //分數欄
-    //輸入欄位輸入完馬上api
+  //輸入欄位輸入完馬上api
   const onBlur = (event, row, index) => {
     const value = parseFloat(event.target.value);
     const key = event.target.id;
@@ -21,24 +23,23 @@ export default function Grading() {
       value !== undefined &&
       !Number.isNaN(value)
     ) {
-        console.log("trigger API !!");
-        const data = {
-          judgeID: judgeID,
-          number: index,
-          row: row,
-          point: value,
-        };
-        console.log(data)
-        Api.post("score", data).then((res) => {
-          event.target.id = res.data.insertedID;
-        });
-
+      console.log("trigger API !!");
+      const data = {
+        judgeID: judgeID,
+        number: index,
+        row: row,
+        point: value,
+      };
+      console.log(data);
+      Api.post("score", data).then((res) => {
+        event.target.id = res.data.insertedID;
+      });
     }
   };
 
   const TableHeader = (index) => {
     //印 TableHeader
-    return <Th key={index}>{Alphabet[index]}</Th>;
+    return <Th key={index}><Center><Tag colorScheme="teal">{Alphabet[index]}</Tag></Center></Th>;
   };
   const [TableHeaderArray, setTableHeaderArray] = useState([]);
   const [InputArray, setInputArray] = useState([]);
@@ -49,7 +50,7 @@ export default function Grading() {
       console.log(judgeInfo);
       setJudgeInfo(judgeInfo);
       setRecords(res.data.scores);
-      setRowIndex(res.data.scores.length+1);
+      setRowIndex(res.data.scores.length + 1);
       for (let i = 0; i < judgeInfo.rowNum; i++) {
         //依照rowNum印出TableHeader
         setTableHeaderArray((oldArray) => [...oldArray, TableHeader(i)]);
@@ -72,7 +73,10 @@ export default function Grading() {
     <>
       <Table variant="striped">
         <Thead>
-          <Tr>{TableHeaderArray}</Tr>
+          <Tr>
+            <Th key="index"></Th>
+            {TableHeaderArray}
+          </Tr>
         </Thead>
         <Tbody>
           {Records.length > 0 ? (
@@ -91,13 +95,15 @@ export default function Grading() {
           {InputArray}
         </Tbody>
       </Table>
+      <Center>
       <Button
         onClick={() => {
           newRow();
         }}
       >
-        New Row
+        +
       </Button>
+      </Center>
     </>
   );
 }
