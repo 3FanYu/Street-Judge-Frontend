@@ -53,7 +53,7 @@ export default function Settlement() {
     if (value === null || value === undefined || value === "") { // 若輸入匡為空的則直接把值設為0
       value = 0;
     }
-    setDisplayBest(value); // 先設定顯示用的排名
+    setDisplayBest(value===0?null:value); // 先設定顯示用的排名
     while (rankmap[value] === undefined && value > 0) { 
       // 計算真實排名，若輸入的排名不存在rankmap中就 -1 直到排名存在為止
       value -= 1;
