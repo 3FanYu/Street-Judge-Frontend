@@ -11,7 +11,7 @@ export default function Home() {
     <>
       <Center h="1000">
       <Stack direction="column" spacing="24px">
-      <Text fontSize="6xl">JudgeMentor</Text>
+      <Text fontSize="6xl">Street Judge</Text>
         <Image src={bg}/>
         <Button onClick={()=>{history.push('/createEvent')}}>新活動</Button>
         <Button>所有活動</Button>
