@@ -7,6 +7,7 @@ import CreateEvent from "./pages/CreateEvent/CreateEvent";
 import CreateEvent2 from "./pages/CreateEvent/CreateEvent2";
 import Grading from "./pages/Grading/Grading";
 import Settlement from "./pages/Settlement/Settlement";
+import EventOverView from "./pages/EventOverView/EventOverView";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/createEvent2" exact component={CreateEvent2} />
             <Route path="/gradingPage/:judgeID" exact component={Grading} />
             <Route path="/settlePage/:eventID" exaxt component={Settlement} />
+            <Route path="/eventOverView/:eventID" component={EventOverView} />
             <Route path="/" component={Home} />
           </Switch>
         </div>
