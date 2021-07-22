@@ -8,7 +8,7 @@ import { Center } from '@chakra-ui/layout';
 import { Tag } from '@chakra-ui/tag';
 import { Input } from '@chakra-ui/input';
 
-export default function Settlement(props) {
+export default function Settlement() {
   const Alphabet = 'ABCDE'; //印出ＡＢＣＤＥ組
   const { eventID } = useParams(); // 取得網址上的參數
   const [AllScores, setAllScores] = useState([]); // 所有評審的分數
