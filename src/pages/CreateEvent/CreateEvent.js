@@ -39,7 +39,7 @@ export default function CreateEvent() {
             <Input {...register("owner")} placeholder="輸入負責人"></Input>
             </Stack>
             <Stack spacing={0}> 
-            <Text mb="9px">負責人</Text>
+            <Text mb="9px">密碼</Text>
 
             <InputGroup>
               <Input

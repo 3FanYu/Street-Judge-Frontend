@@ -17,6 +17,7 @@ import { useHistory } from 'react-router-dom';
 
 export default function CreateEvent2(props) {
   const eventID = props.location.state.eventID;
+  const history = useHistory();
   const { register, unregister, handleSubmit } = useForm();
   const [JudgeNum, setJudgeNum] = useState(1);
   const [RowNum, setRowNum] = useState(0);
@@ -45,6 +46,7 @@ export default function CreateEvent2(props) {
     };
     Api.post('/judge', result).then(res => {
       console.log(res);
+      history.push({ pathname: '/eventOverview/' + eventID });
     });
   };
   return (
