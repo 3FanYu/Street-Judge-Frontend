@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import {
-  Box,
   Text,
   Heading,
   VStack,
@@ -17,13 +16,14 @@ import Api from '../../axios/Api';
 import AppBar from '../../components/Header/AppBar';
 
 export default function EventOverView() {
+  const { REACT_APP_DOMAIN } = process.env;
   const history = useHistory();
   const { eventID } = useParams();
   const [Title, setTitle] = useState('');
   const [Event, setEvent] = useState();
   const [Judges, setJudges] = useState([]);
   const copyToClipboard = async ID => {
-    const domain = 'localhost:3000/gradingPage/';
+    const domain = `${REACT_APP_DOMAIN}/gradingPage/`;
     try {
       navigator.clipboard.writeText(domain + ID).then(function() {
         console.log('success');
@@ -41,6 +41,7 @@ export default function EventOverView() {
       if (res.status === 200 && res.data.result === true) {
         const data = res.data;
         setEvent(data.event)
+        console.log(data.event.owner)
         setTitle(data.event.name);
         setJudges(data.event.judges);
       }
@@ -56,7 +57,7 @@ export default function EventOverView() {
           <HStack style={{ float: 'left' }}>
             <Center>
               <Text fontSize='20px'> 主辦人：</Text>
-              <Heading style={{ float: 'right' }}>Gory Lin</Heading>
+              <Heading style={{ float: 'right' }}>{Event? Event.owner:""}</Heading>
             </Center>
           </HStack>
         </Container>
