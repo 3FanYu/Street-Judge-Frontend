@@ -64,6 +64,7 @@ export default function Grading() {
       <CleanGradingInput
         index={RowIndex}
         onBlurFunc={onBlur}
+        amount = {JudgeInfo.rowNum}
       ></CleanGradingInput>,
     ]);
     setRowIndex((v) => v + 1);
