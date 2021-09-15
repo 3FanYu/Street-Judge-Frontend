@@ -24,7 +24,7 @@ export default function CleanGradingInput(props) {
               onBlur={e => {
                 onBlur(e, key+1, index);
               }}
-              placeholder={`輸入${key+1}${Alphabet[key]}分數`}
+              placeholder={`輸入${index}${Alphabet[key]}分數`}
             />
           </Td>
         );
