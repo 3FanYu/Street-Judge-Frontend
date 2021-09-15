@@ -25,13 +25,13 @@ export default function CreateEvent() {
   };
   return (
     <>
-      <Center h='900'>
-        <Stack>
+      <Center h='100%'>
+        <Stack width='100%' maxWidth='400px'>
           <Center>
             <Image src={bg} w='450px' h='450px' />
           </Center>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <Stack spacing={10} w='500px'>
+            <Stack spacing={10}>
               <Stack spacing={0}>
                 <Text mb='9px'>活動名稱</Text>
                 <Input {...register('name')} placeholder='輸入活動名稱'></Input>
