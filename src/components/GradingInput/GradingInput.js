@@ -1,11 +1,11 @@
-import React from "react";
-import { Tr, Td } from "@chakra-ui/table";
-import { Input } from "@chakra-ui/input";
-import { Tag } from "@chakra-ui/tag";
-import { Badge, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import React from 'react';
+import { Tr, Td } from '@chakra-ui/table';
+import { Input } from '@chakra-ui/input';
+import { Tag } from '@chakra-ui/tag';
+import { Badge, InputGroup, InputLeftElement } from '@chakra-ui/react';
 
 export default function GradingInput(props) {
-  const Alphabet = "ABCDE"; //印出ＡＢＣＤＥ組
+  const Alphabet = 'ABCDE'; //印出ＡＢＣＤＥ組
   const readOnly = props.readOnly ? props.readOnly : false;
   const scores = props.scores;
   const rowIndex = props.rowIndex ? props.rowIndex : null;
@@ -15,7 +15,7 @@ export default function GradingInput(props) {
   return (
     <Tr key={rowIndex}>
       <Td>
-        <Tag variant="solid" colorScheme="teal">
+        <Tag variant='solid' colorScheme='teal'>
           {rowIndex + 1}
         </Tag>
       </Td>
@@ -25,12 +25,12 @@ export default function GradingInput(props) {
             <Td key={index}>
               <Input
                 isReadOnly={readOnly}
-                onBlur={(e) => {
+                onBlur={e => {
                   onBlur(e, index + 1, rowIndex + 1);
                 }}
                 placeholder={
                   readOnly
-                    ? "未輸入"
+                    ? '未輸入'
                     : `輸入${rowIndex + 1}${Alphabet[index]}分數`
                 }
               />
@@ -40,17 +40,23 @@ export default function GradingInput(props) {
           return (
             <Td key={index}>
               <InputGroup>
-              {isOT && score.rank == rankInput ? <InputLeftElement pointerEvents="none" children={<Badge colorScheme="purple" >OT</Badge>} /> : <></>}
-              <Input
-                bg={score.rank <= rankInput ? "teal" : ""}
-                isReadOnly={readOnly}
-                onBlur={(e) => {
-                  onBlur(e, score.row, rowIndex + 1);
-                }}
-                placeholder={`輸入${score.number}${Alphabet[score.row]}分數`}
-                defaultValue={Math.round(score.point*100)/100}
-                id={score._id}
-              ></Input>
+                {isOT && score.rank == rankInput ? (
+                  <InputLeftElement
+                    pointerEvents='none'
+                    children={<Badge colorScheme='purple'>OT</Badge>}
+                  />
+                ) : (
+                  <></>
+                )}
+                <Input
+                  bg={score.rank <= rankInput ? 'teal' : ''}
+                  isReadOnly={readOnly}
+                  onBlur={e => {
+                    onBlur(e, score.row, rowIndex + 1);
+                  }}
+                  placeholder={`輸入${score.number}${Alphabet[score.row]}分數`}
+                  defaultValue={Math.round(score.point * 100) / 100}
+                  id={score._id}></Input>
               </InputGroup>
             </Td>
           );
