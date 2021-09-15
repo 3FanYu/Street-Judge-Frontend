@@ -51,11 +51,13 @@ export default function CreateEvent2(props) {
   };
   return (
     <>
-      <Center h='900'>
-        <Stack>
-          <Image src={bg} w='450px' h='450px'></Image>
+      <Center h='100%'>
+        <Stack width='100%' maxW='400px'>
+          <Center>
+            <Image src={bg} w='450px' h='450px'/>
+          </Center>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <Stack spacing={10} w='500px'>
+            <Stack spacing={10} w='100%'>
               <Stack>
                 <Text mb='8px'>輸入海選排數</Text>
                 <NumberInput
