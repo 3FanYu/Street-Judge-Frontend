@@ -24,6 +24,7 @@ export default function GradingInput(props) {
           return (
             <Td key={index}>
               <Input
+                width='130px'
                 isReadOnly={readOnly}
                 onBlur={e => {
                   onBlur(e, index + 1, rowIndex + 1);

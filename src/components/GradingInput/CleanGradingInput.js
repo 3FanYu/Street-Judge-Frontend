@@ -20,7 +20,7 @@ export default function CleanGradingInput(props) {
       {amountMap.map(key => {
         return (
           <Td>
-            <Input
+            <Input width="130px"
               onBlur={e => {
                 onBlur(e, key+1, index);
               }}
