@@ -11,7 +11,7 @@ export default function CleanGradingInput(props) {
   const amountMap = Array.from(Array(amount).keys());
   //todo 要依照評審資訊的rowNum決定一列有幾欄
   return (
-    <Tr key={index}>
+    <Tr key={index} maxW='900px'>
       <Td>
         <Tag variant='solid' colorScheme='teal'>
           {index}
@@ -20,7 +20,7 @@ export default function CleanGradingInput(props) {
       {amountMap.map(key => {
         return (
           <Td>
-            <Input width="130px"
+            <Input width='100%' maxW='130px'
               onBlur={e => {
                 onBlur(e, key+1, index);
               }}
