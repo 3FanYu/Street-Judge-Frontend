@@ -23,14 +23,12 @@ export default function Grading() {
       value !== undefined &&
       !Number.isNaN(value)
     ) {
-      console.log('trigger API !!');
       const data = {
         judgeID: judgeID,
         number: index,
         row: row,
         point: value
       };
-      console.log(data);
       Api.post('score', data).then(res => {
         event.target.id = res.data.insertedID;
       });
@@ -53,7 +51,6 @@ export default function Grading() {
     //一開始先api拿評審資訊
     Api.get('judge?judgeID=' + judgeID).then(res => {
       const judgeInfo = res.data.judgeInfo;
-      console.log(judgeInfo);
       setJudgeInfo(judgeInfo);
       setRecords(res.data.scores);
       setRowIndex(res.data.scores.length + 1);
@@ -70,15 +67,14 @@ export default function Grading() {
       <CleanGradingInput
         index={RowIndex}
         onBlurFunc={onBlur}
-        amount={JudgeInfo.rowNum}>
-        </CleanGradingInput>
+        amount={JudgeInfo.rowNum}></CleanGradingInput>
     ]);
     setRowIndex(v => v + 1);
   };
 
   return (
     <>
-      <Center >
+      <Center>
         <Table variant='striped' width='100%' maxW='900px' ml='50px'>
           <Thead>
             <Tr>
