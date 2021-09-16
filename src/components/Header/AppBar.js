@@ -41,12 +41,6 @@ export default function AppBar(props){
         display={{ base: isOpen ? "block" : "none", md: "block" }}
         mt={{ base: 4, md: 0 }}
       >
-        <Button
-          variant="outline"
-          _hover={{ bg: "teal.700", borderColor: "teal" }}
-        >
-          Create account
-        </Button>
       </Box>
     </Flex>
   );
