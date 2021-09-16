@@ -75,7 +75,7 @@ export default function Grading() {
   return (
     <>
       <Center>
-        <Table variant='striped' width='100%' maxW='900px' ml='50px'>
+        <Table variant='striped' width='100%' maxW='900px'>
           <Thead>
             <Tr>
               <Th key='index'></Th>
